@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dotnet_6_rest_api_with_mongodb:
+    image: ${DOCKER_REGISTRY-}dotnet6restapiwithmongodb
+    build:
+      context: .
+      dockerfile: Dockerfile
