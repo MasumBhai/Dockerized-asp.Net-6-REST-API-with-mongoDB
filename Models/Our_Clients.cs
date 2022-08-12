@@ -1,11 +1,14 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DotNet_6_REST_API_with_mongoDB.Models;
 
 // todo: MongoDb Collection's field name & This model classes variable's name must be same
-public class Our_Client
+public class Our_Clients
 {
-    public ObjectId Id { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
 
     public string name { get; set; }
 
@@ -13,6 +16,7 @@ public class Our_Client
 
     public string password { get; set; }
 
-    public DateTime date_of_birth { get; set; }
+    public string date_of_birth { get; set; }
+
 
 }
