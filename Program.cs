@@ -1,3 +1,5 @@
+using DotNet_6_REST_API_with_mongoDB.Models;
+using DotNet_6_REST_API_with_mongoDB.Service;
 using Newtonsoft.Json.Serialization;
 
 await Bootstrapper
@@ -9,6 +11,8 @@ await Bootstrapper
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<MongoDBService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,7 +25,7 @@ builder.Services.AddCors(c =>
 });
 
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
-    .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+.AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
 builder.Services.AddHealthChecks();
 var app = builder.Build();
