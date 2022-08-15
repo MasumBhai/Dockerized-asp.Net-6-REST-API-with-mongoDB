@@ -58,48 +58,6 @@ namespace DotNet_6_REST_API_with_mongoDB.Controllers
             await _mongoDBService.DeleteAsync(id);
             return NoContent();
         }
-        // [HttpGet]
-        // public JsonResult Get()
-        // {
-        //     MongoClient dbClient = new MongoClient(_configuration.GetConnectionString("dbConnectionURI"));
-        //
-        //     var dbList = dbClient.GetDatabase("dotnet_6_REST_API_mongoDB").GetCollection<Our_Clients>("Our_Clients").AsQueryable();
-        //
-        //     return new JsonResult(dbList);
-        // }
-        //
-        // [HttpPost]
-        // public JsonResult Post(Our_Clients client)
-        // {
-        //     MongoClient dbClient = new MongoClient(_configuration.GetConnectionString("dbConnectionURI"));
-        //
-        //     int lastItemId = dbClient.GetDatabase("dotnet_6_REST_API_mongoDB").GetCollection<Our_Clients>("Our_Clients").AsQueryable().Count();
-        //
-        //     client.name = RandomString(5);
-        //     client.email = RandomString(8) + "@gmail.com";
-        //     client.password = RandomString(8);
-        //     client.date_of_birth = "1998-11-06";
-        //     client.Id = ObjectId.GenerateNewId().ToString();
-        //
-        //     dbClient.GetDatabase("dotnet_6_REST_API_mongoDB").GetCollection<Our_Clients>("Our_Clients").InsertOne(client);
-        //
-        //     return new JsonResult(client);
-        // }
-        //
-        // [HttpPut]
-        // public JsonResult Put(Our_Clients client)
-        // {
-        //     MongoClient dbClient = new MongoClient(_configuration.GetConnectionString("dbConnectionURI"));
-        //
-        //     var filter = Builders<Our_Clients>.Filter.Eq("Id", client.Id);
-        //
-        //     var update = Builders<Our_Clients>.Update.Set("name", "Masum The Zero").Set("password", client.password).Set("date_of_birth", client.date_of_birth).Set("email", client.email);
-        //
-        //     dbClient.GetDatabase("dotnet_6_REST_API_mongoDB").GetCollection<Our_Clients>("Our_Clients")
-        //         .UpdateOne(filter, update);
-        //
-        //     return new JsonResult("updated atlast");
-        // }
 
         private string RandomString(int length)
         {
