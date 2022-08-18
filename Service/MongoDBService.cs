@@ -20,6 +20,11 @@ namespace DotNet_6_REST_API_with_mongoDB.Service
             return await _Our_ClientsCollection.Find(new BsonDocument()).ToListAsync();
         }
 
+        public async Task<Our_Clients> GetbyIdAsync(string id)
+        {
+            return await _Our_ClientsCollection.Find<Our_Clients>(clients => clients.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task CreateAsync(Our_Clients clients)
         {
             await _Our_ClientsCollection.InsertOneAsync(clients);
